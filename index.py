@@ -77,7 +77,7 @@ class index:
             return humid
 
     
-arr = [1,2,3,4]
+arr = [1,2,3]
 main = index(arr)
 
 while True:
