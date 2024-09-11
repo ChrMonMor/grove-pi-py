@@ -10,7 +10,12 @@ import requests
 import json
 import time 
 import math
-import grovepi
+import grovepiimport socket
+ 
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# connect() for UDP doesn't send packets
+s.connect(('10.0.0.0', 0))  
+ip = s.getsockname()[0])
 
 class index:
     def __init__(self, sensorPorts) -> None:
@@ -52,7 +57,7 @@ class index:
         self.update_pin_timer(i)
         api_url = "http://192.168.1.147/sensordate.php"
         headers =  {"Content-Type":"application/json"}
-        params = {"readings": readings, "promise": self.timer[i]}
+        params = {"readings": readings, "promise": self.timer[i], "ip": ip}
         tries = int(0)
         while tries < 5:
             response = requests.post(api_url, data=json.dumps(params), headers=headers)
