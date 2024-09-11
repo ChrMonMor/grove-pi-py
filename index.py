@@ -10,7 +10,8 @@ import requests
 import json
 import time 
 import math
-import grovepiimport socket
+import grovepi
+import socket
  
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # connect() for UDP doesn't send packets
